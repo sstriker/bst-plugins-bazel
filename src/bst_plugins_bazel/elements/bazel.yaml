@@ -1,0 +1,28 @@
+variables:
+
+  bazel: bazel
+
+  # TODO: config would be better...
+
+  # One of single, external, all
+  bazel-workspace-mode: "external"
+
+  # One of source or artifact
+  bazel-dependency-mode: "source"
+
+  # Bazel build root directory
+  bazel-build-root: "/bazel"
+
+  # Bazel cache root directory
+  bazel-cache-directory: "/bazel-cache"
+  
+config:
+
+
+  build-commands:
+  # As we run bazel within the element source dir, this should do
+  # --output_user_root /bazel-home
+  # "bazel --no-systemrc --no-home_rc --no-workspace_rc --bazelrc=/dev/null build ... ; bazel shutdown"
+  - |
+    %{bazel} build ...
+    %{bazel} shutdown
