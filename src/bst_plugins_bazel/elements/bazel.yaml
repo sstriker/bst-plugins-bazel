@@ -1,6 +1,6 @@
 variables:
 
-  bazel: bazel
+  bazel: bazel --output_user_root "%{bazel-cache-directory}"
 
   # TODO: config would be better...
 

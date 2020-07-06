@@ -107,7 +107,7 @@ class BazelElement(BuildElement):
 
         self.bazel_build_root = self.get_variable("bazel-build-root")
 
-        self.bazel_cache_directory = self.get_variable("bazel-cache-root")
+        self.bazel_cache_directory = self.get_variable("bazel-cache-directory")
 
         # TODO configure bazel for remote asset caching, pointing to the
         # TODO locally exposed buildbox-casd actioncache
@@ -356,7 +356,7 @@ cc_library(
         "-I{include_dir}"
     ],
 """.format(
-            include_dir=element.get_variable("include-dir")
+            include_dir=element.get_variable("includedir")
         )
 
         build_file_content += """    deps = [
