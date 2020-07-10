@@ -38,7 +38,6 @@ import re
 
 from buildstream import BuildElement, Scope, ElementError
 from buildstream import SandboxFlags
-from buildstream.types import _CacheBuildTrees
 
 
 def _exts2re(**extmap):
@@ -61,11 +60,8 @@ class BazelElement(BuildElement):
 
     BST_MIN_VERSION = "2.0"
 
-    # XXX TODO CORE ENHANCEMENT
-    # XXX BuildTrees are a massive waste for bazel, and should never be used.
-    # XXX Having a way to never store buildtrees for bazel builds would be
-    # XXX ideal.  For example by setting:
-    BST_CACHE_BUILDTREES = _CacheBuildTrees.NEVER
+    # BuildTrees do not make particular sense in the context of Bazel.
+    BST_NEVER_CACHE_BUILDTREES = True
 
     # XXX TODO CORE ENHANCEMENT
     # XXX Indicate that bazel would like to use an element cache directory
